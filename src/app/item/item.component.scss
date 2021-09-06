@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  width: 100%;
+  table {
+    width: 80%;
+  }
+  thead {
+    width: 100%;
+  }
+  th, tr {
+    width: 15%;
+  }
+}

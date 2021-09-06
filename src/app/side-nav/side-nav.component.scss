@@ -1,0 +1,29 @@
+:host {
+  background-color: #333c44;
+  color: white;
+  padding: 16px;
+  h1 {
+    margin: 10px 0px 40px 0px;
+  }
+  .mat-nav-list {
+    a {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      font-weight: 500;
+      &:hover {
+        color: #66bb6a;
+        background-color: #fff;
+        transition-timing-function: ease;
+        transition: 0.3s;
+      }
+    }
+    .mat-icon {
+      padding-right: 35px;
+    }
+  }
+  mat-divider {
+    background-color: white;
+  }
+}
