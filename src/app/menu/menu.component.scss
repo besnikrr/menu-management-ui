@@ -1,15 +1,19 @@
 :host {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  width: 100%;
-  table {
-    width: 80%;
+  .menus {
+    display: flex;
+    flex-direction: column;
+    padding: 0 90px;
+    margin-top: 45px;
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+      button:not(:last-child) {
+        margin-right: 8px
+      }
+    }
   }
-  thead {
-    width: 100%;
-  }
-  th, tr {
-    width: 15%;
+  tr, td {
+    padding: 8px 0px;
   }
 }

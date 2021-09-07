@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {MenuService} from "../services/menu.service";
-import {Menu} from "../models/Menu";
+import {MenuService} from "../shared/services/menu.service";
+import {Menu} from "../shared/models/Menu";
 import {MatDialog} from "@angular/material/dialog";
-import {MenuFormComponent} from "../menu-form/menu-form.component";
+import {MenuFormComponent} from "./menu-form/menu-form.component";
+import {MenuItemsComponent} from "./menu-items/menu-items.component";
+import {ItemToMenuFormComponent} from "./item-to-menu-form/item-to-menu-form.component";
 
 @Component({
   selector: 'app-menu',
@@ -32,13 +34,6 @@ export class MenuComponent implements OnInit {
     })
   }
 
-  updateMenu(menu: any) {
-    this.menuService.update(menu.id, menu).subscribe(data => {
-      console.log(data)
-      this.getMenus();
-    })
-  }
-
   deleteMenu(menu: any) {
     this.menuService.delete(menu.id)
       .subscribe(
@@ -46,10 +41,6 @@ export class MenuComponent implements OnInit {
           console.log(response);
           this.getMenus();
       })
-  }
-
-  showMenuItem(menu: any) {
-
   }
 
   openModalToCreate() {
@@ -69,5 +60,18 @@ export class MenuComponent implements OnInit {
         this.getMenus();
       }
     );
+  }
+
+  showMenuItem(menu: any) {
+    const dialogRef = this.dialog.open(MenuItemsComponent)
+    dialogRef.componentInstance.items = menu.items;
+    dialogRef.componentInstance.menuId = menu.id;
+  }
+
+  addItemToMenu() {
+    const dialogRef = this.dialog.open(ItemToMenuFormComponent);
+    dialogRef.afterClosed().subscribe(() => {
+      this.getMenus()
+    })
   }
 }

@@ -1,41 +1,47 @@
-<button mat-raised-button color="primary" (click)="openModalToCreate()" class="add">Add Menu</button>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 flex-container users_table" matSort>
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name. </th>
-    <td mat-cell *matCellDef="let menu"> {{menu?.name}} </td>
-  </ng-container>
+<div class="menus">
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="openModalToCreate()" class="add">Add Menu</button>
+    <button mat-raised-button color="primary" (click)="addItemToMenu()">Add Item To Menu</button>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 flex-container users_table" matSort>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%"> Name. </th>
+      <td mat-cell *matCellDef="let menu"> {{menu?.name}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description. </th>
-    <td mat-cell *matCellDef="let menu"> {{menu?.description}} </td>
-  </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 40%"> Description. </th>
+      <td mat-cell *matCellDef="let menu"> {{menu?.description}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="edit">
-    <th mat-header-cell *matHeaderCellDef> Edit </th>
-    <td mat-cell *matCellDef="let menu" class="table-cell flex-container">
-      <button mat-mini-fab color="primary" class="btn-fab-row" (click)="openModalToUpdate(menu)">
-        <mat-icon class="material-icons edit_icon">edit</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="delete">
-    <th mat-header-cell *matHeaderCellDef> Delete </th>
-    <td mat-cell *matCellDef="let menu" class="table-cell flex-container">
-      <button mat-mini-fab color="warn" class="btn-fab-row" (click)="deleteMenu(menu)">
-        <mat-icon class="fa fa-list-alt delete_icon" aria-hidden="true">delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="show_tasks">
-    <th mat-header-cell *matHeaderCellDef> Show Items </th>
-    <td mat-cell *matCellDef="let menu" class="table-cell flex-container">
-      <button mat-raised-button color="accent" class="btn-fab-row show_tasks" (click)="showMenuItem(menu)">
-        Show Tasks
-      </button>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef  style="width: 9%"> Edit </th>
+      <td mat-cell *matCellDef="let menu" class="table-cell flex-container">
+        <button mat-mini-fab color="primary" class="btn-fab-row" (click)="openModalToUpdate(menu)">
+          <mat-icon class="material-icons edit_icon">edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef style="width: 9%"> Delete </th>
+      <td mat-cell *matCellDef="let menu" class="table-cell flex-container">
+        <button mat-mini-fab color="warn" class="btn-fab-row" (click)="deleteMenu(menu)">
+          <mat-icon class="fa fa-list-alt delete_icon" aria-hidden="true">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="show_tasks">>
+      <th mat-header-cell *matHeaderCellDef style="width: 12%"> Show Items </th>
+      <td mat-cell *matCellDef="let menu" class="table-cell flex-container">
+        <button mat-raised-button color="accent" class="btn-fab-row show_tasks" (click)="showMenuItem(menu)">
+          Show Items
+        </button>
+      </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
 

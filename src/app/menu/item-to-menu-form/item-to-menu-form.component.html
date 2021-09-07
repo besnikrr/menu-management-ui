@@ -1,0 +1,20 @@
+<h1 class="heading">Add item to menu</h1>
+<form name="form" (ngSubmit)="addItemToMenu()" [formGroup]="form">
+  <mat-form-field appearance="outline" color="primary">
+    <mat-label>Select Menu</mat-label>
+    <mat-select name="menu" placeholder="Menu" formControlName="menu">
+      <mat-option *ngFor="let menu of menus"
+                  [value]="menu.name"
+      >{{menu.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" color="primary">
+    <mat-label>Select Item</mat-label>
+    <mat-select name="item" placeholder="Item" formControlName="item">
+      <mat-option *ngFor="let item of items"
+                  [value]="item.name"
+      >{{item.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="save">Add</button>
+</form>

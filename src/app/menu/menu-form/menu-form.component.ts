@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MenuService} from "../services/menu.service";
-import {Menu} from "../models/Menu";
+import {MenuService} from "../../shared/services/menu.service";
+import {Menu} from "../../shared/models/Menu";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({
@@ -23,7 +23,7 @@ export class MenuFormComponent implements OnInit {
   onCreateOrUpdate(menu: any): void {
     //create menu
     console.log(menu)
-    if (menu.id === null) {
+    if (!menu.id) {
       console.log('hello1')
       this.menuService.create({
         name: this.menu.name,
@@ -41,7 +41,9 @@ export class MenuFormComponent implements OnInit {
       console.log('hello2')
       this.menuService.update(menu.id, menu).subscribe(data => {
           console.log(data)
-        });
+      });
+      this.dialog.closeAll();
     }
   }
+
 }

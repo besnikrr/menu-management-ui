@@ -1,0 +1,63 @@
+<h1 class="heading">Add Item</h1>
+<form class="form"
+      name="form"
+      (ngSubmit)="f.form.valid"
+      #f="ngForm"
+      novalidate>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput
+           type="text"
+           class="form-control"
+           name="name"
+           [(ngModel)]="item.name"
+           required
+           #name="ngModel"
+           placeholder="Name">
+  </mat-form-field>
+  <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="f.submitted && name.invalid">
+    Name is required!
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Price</mat-label>
+    <input matInput
+           type="number"
+           class="form-control"
+           name="price"
+           [(ngModel)]="item.price"
+           required
+           #price="ngModel"
+           placeholder="Price">
+  </mat-form-field>
+  <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="f.submitted && price.invalid">
+    <div *ngIf="price.errors!.required">Price is required</div>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input matInput
+           type="text"
+           class="form-control"
+           name="description"
+           [(ngModel)]="item.description"
+           required
+           #description="ngModel"
+           placeholder="Description">
+  </mat-form-field>
+  <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="f.submitted && description.invalid">
+    <div *ngIf="description.errors!.required">Description is required</div>
+    <div *ngIf="description.errors!.minlength">
+      Description must be at least 6 characters
+    </div>
+  </div>
+  <button (click)="onCreateOrUpdate(item)" mat-raised-button color="primary" class="save">Add</button>
+</form>
+

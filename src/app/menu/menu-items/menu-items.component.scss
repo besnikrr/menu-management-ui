@@ -1,0 +1,19 @@
+.mat-list-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #a4a8a9;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+p {
+  margin-right: 5px;
+  margin-bottom: 0px;
+  color: #a4a8a9;
+  span {
+    color: #333c44;
+    font-weight: 500;
+  }
+}
+button {
+  margin-left: 16px;
+}

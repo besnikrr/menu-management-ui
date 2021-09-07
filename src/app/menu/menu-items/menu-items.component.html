@@ -1,0 +1,10 @@
+<h1 class="heading">Items</h1>
+<mat-list>
+  <p *ngIf="items.length === 0">There are no items for this menu!</p>
+  <mat-list-item *ngFor="let item of items">
+    <p>Name: <span>{{item.name}}</span> |</p>
+    <p>Price: <span>{{item.price}}</span> |</p>
+    <p>Description: <span>{{item.description}}</span></p>
+    <button mat-raised-button color="warn" (click)="removeItemFromMenu(item.id)">Remove</button>
+  </mat-list-item>
+</mat-list>

@@ -1,23 +1,21 @@
 nav {
   display: flex;
-  width: 100%;
   justify-content: flex-end;
   align-items: center;
   background-color: #66bb6a;
+  padding: 0px 30px;
   .profile {
     display: flex;
     align-items: center;
     justify-content: center;
-    .mat-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      color: #66bb6a;
-      background-color: #fff;
-      border-radius: 10%;
-      margin-right: 30px;
+    a {
+      color: #f0f3f5;
+      font-weight: 500;
+      cursor: pointer;
+      margin-right: 16px;
+      &:hover {
+        color: #fff;
+      }
     }
     button {
       width: 50px;
@@ -27,6 +25,7 @@ nav {
       min-width: inherit;
       border: 0px;
       background-color: transparent;
+      cursor: pointer;
       img {
         object-fit: contain;
         width: 100%;

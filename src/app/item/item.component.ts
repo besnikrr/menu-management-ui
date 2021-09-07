@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ItemService} from "../services/item.service";
-import {Item} from "../models/Item";
+import {ItemService} from "../shared/services/item.service";
+import {Item} from "../shared/models/Item";
 import {MatTableDataSource} from "@angular/material/table";
+import {MatDialog} from "@angular/material/dialog";
+import {ItemFormComponent} from "./item-form/item-form.component";
 
 @Component({
   selector: 'app-item',
@@ -16,7 +18,7 @@ export class ItemComponent implements OnInit {
   displayedColumns: string[] = ['name', 'price', 'description', 'edit', 'delete'];
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getItems();
@@ -29,21 +31,31 @@ export class ItemComponent implements OnInit {
     })
   }
 
-  updateItem(item: any) {
-    this.itemService.update(this.currentItem.id, this.currentItem).subscribe(data => {
-      console.log(data)
-    })
-  }
-
-  deleteItem(item: any) {
-    this.itemService.delete(this.currentItem.id)
+  deleteItem(menu: any) {
+    this.itemService.delete(menu.id)
       .subscribe(
         response => {
           console.log(response);
-        })
+          this.getItems();
+      })
   }
 
   openModalToCreate() {
+    const dialogRef = this.dialog.open(ItemFormComponent)
+    this.reloadTable(dialogRef);
+  }
 
+  openModalToUpdate(item: any) {
+    const dialogRef = this.dialog.open(ItemFormComponent);
+    dialogRef.componentInstance.item = item;
+    this.reloadTable(dialogRef)
+  }
+
+  private reloadTable(dialogRef: any) {
+    dialogRef.afterClosed().subscribe(
+      (result: any) => {
+        this.getItems();
+      }
+    );
   }
 }
